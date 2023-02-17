@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Projectcard from "./Projectcard";
 import { Container, Row, Col } from "react-bootstrap";
 import leaf from "../../Assets/Projects/leaf.png";
@@ -8,12 +8,29 @@ import chatify from "../../Assets/Projects/chatify.png";
 import suicide from "../../Assets/Projects/suicide.png";
 import bitsOfCode from "../../Assets/Projects/blog.png";
 const Projects = () => {
+  const [headingColor, updateColor] = useState(false);
+
+  function scrollHandler() {
+    if (window.scrollY >= 1000) {
+      updateColor(true);
+    } else {
+      updateColor(false);
+    }
+  }
+  useEffect(() => {
+    // Client-side-only code
+    window.addEventListener("scroll", scrollHandler);
+  }, [headingColor]);
   return (
     <Container fluid className="project-section">
       {/* <Particle /> */}
       <Container className="">
-        <h1 className="project-heading justify-content-center d-flex ">
-          My Recent <strong className="purple">Works </strong>
+        <h1
+          className={`project-heading justify-content-center ${
+            headingColor ? "neonheading" : ""
+          } d-flex `}
+        >
+          My Recent Works
         </h1>
         <p
           className="justify-content-center d-flex "

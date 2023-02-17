@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Aboutcard from "./Aboutcard";
 import Techstack from "./Techstack";
@@ -6,6 +6,19 @@ import programmer from "../../Assets/programmer.jpg";
 import Toolstack from "./Toolstack";
 import Image from "next/image";
 const About = () => {
+  const [headingColor, updateColor] = useState(false);
+
+  function scrollHandler() {
+    if (window.scrollY >= 2200) {
+      updateColor(true);
+    } else {
+      updateColor(false);
+    }
+  }
+  useEffect(() => {
+    // Client-side-only code
+    window.addEventListener("scroll", scrollHandler);
+  }, [headingColor]);
   return (
     <Container fluid className="about-section">
       {/* <Particle /> */}
@@ -37,14 +50,22 @@ const About = () => {
             />
           </Col>
         </Row>
-        <h1 className="project-heading  justify-content-center d-flex ">
-          Professional <strong className="purple mx-2">Skillset </strong>
+        <h1
+          className={`project-heading  justify-content-center d-flex ${
+            headingColor ? "neonheading" : ""
+          } `}
+        >
+          Professional Skillset
         </h1>
 
         <Techstack />
 
-        <h1 className="project-heading justify-content-center d-flex  ">
-          <strong className="purple mx-2">Tools</strong> I use
+        <h1
+          className={`project-heading justify-content-center d-flex  ${
+            headingColor ? "neonheading" : ""
+          } `}
+        >
+          Tools I use
         </h1>
         <Toolstack />
 

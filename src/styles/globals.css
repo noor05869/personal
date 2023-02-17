@@ -798,3 +798,15 @@ align-items: center;
   }
 }
 
+.neonheading{
+    position: relative;
+    text-align: center;
+    font-size: 50px;
+    font-family: 'Megrim', cursive;
+    text-shadow: 
+          0 0 5px #0bf4f3,
+          0 0 10px #0bf4f3,
+          0 0 20px #0bf4f3,
+          0 0 40px #0bf4f3,
+          0 0 80px #0bf4f3;
+}

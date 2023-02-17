@@ -1,16 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
 const Intro = () => {
+  const [headingColor, updateColor] = useState(false);
+
+  function scrollHandler() {
+    if (window.scrollY >= 40) {
+      updateColor(true);
+    } else {
+      updateColor(false);
+    }
+  }
+  useEffect(() => {
+    // Client-side-only code
+    window.addEventListener("scroll", scrollHandler);
+  }, [headingColor]);
   return (
     <Container fluid className="home-about-section" id="about">
       <Container>
         <Row>
           <Col className="home-about-description justify-content-center">
-            <h1 style={{ fontSize: "2.6em" }}>
-              LET ME <span className="purple"> INTRODUCE </span> MYSELF
+            <h1
+              className={`${headingColor ? "neonheading" : ""}`}
+              style={{ fontSize: "2.6em" }}
+            >
+              LET ME <span className=" "> INTRODUCE </span> MYSELF
             </h1>
-            <p className="home-about-body">
+            <p className="home-about-body ">
               I fell in love with programming and I have at least learnt
               something, I think… 🤷‍♂️
               <br />
